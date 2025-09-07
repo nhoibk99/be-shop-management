@@ -39,4 +39,9 @@ public class ProductDto {
     
     private Long categoryId;
     private String categoryName;
+    
+    private String imageUrl;
+    private String specs;
+    private String label;
+    private String labelText;
 }

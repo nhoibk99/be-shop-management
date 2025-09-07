@@ -50,4 +50,16 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+    
+    @Column(name = "image_url")
+    private String imageUrl;
+    
+    @Column(columnDefinition = "TEXT")
+    private String specs;
+    
+    @Column(length = 50)
+    private String label;
+    
+    @Column(name = "label_text", length = 50)
+    private String labelText;
 }
