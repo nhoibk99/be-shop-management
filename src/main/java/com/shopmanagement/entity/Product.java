@@ -56,10 +56,4 @@ public class Product {
     
     @Column(columnDefinition = "TEXT")
     private String specs;
-    
-    @Column(length = 50)
-    private String label;
-    
-    @Column(name = "label_text", length = 50)
-    private String labelText;
 }

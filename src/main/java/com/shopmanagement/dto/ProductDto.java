@@ -42,6 +42,14 @@ public class ProductDto {
     
     private String imageUrl;
     private String specs;
-    private String label;
-    private String labelText;
+    
+    // Computed fields based on condition
+    public String getLabel() {
+        if (condition == null) return "new";
+        return condition == ProductCondition.USED ? "used" : "new";
+    }
+    
+    public String getLabelText() {
+        return condition != null ? condition.name() : "NEW";
+    }
 }

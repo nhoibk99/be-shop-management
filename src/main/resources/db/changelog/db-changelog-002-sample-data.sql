@@ -5,21 +5,21 @@
 
 -- Insert categories
 INSERT INTO categories (name) VALUES 
-('Smartphones'),
-('Tablets'),
-('Chargers'),
-('Headphones'),
-('Cases'),
-('Screen Protectors'),
-('Power Banks'),
-('Smartwatches'),
+('Smartphones', 'new', 'NEW'),
+('Tablets', 'new', 'NEW'),
+('Chargers', 'new', 'NEW'),
+('Headphones', 'new', 'NEW'),
+('Cases', 'new', 'NEW'),
+('Screen Protectors', 'new', 'NEW'),
+('Power Banks', 'new', 'NEW'),
+('Smartwatches', 'new', 'NEW'),
 ('Earbuds');
 
 -- Insert users (password: password123 - encoded with BCrypt)
 INSERT INTO users (username, password, role, email) VALUES 
-('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'ADMIN', 'admin@mobilemart.com'),
-('staff1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'STAFF', 'staff1@mobilemart.com'),
-('customer1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'CUSTOMER', 'customer1@mobilemart.com'),
+('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'ADMIN', 'admin@mobilemart.com', 'new', 'NEW'),
+('staff1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'STAFF', 'staff1@mobilemart.com', 'new', 'NEW'),
+('customer1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'CUSTOMER', 'customer1@mobilemart.com', 'new', 'NEW'),
 ('john_doe', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDi', 'CUSTOMER', 'john.doe@email.com');
 
 -- Insert products (New Phones)
@@ -35,13 +35,13 @@ INSERT INTO products (name, description, price, condition, stock, category_id, i
 
 -- Insert products (Used Phones)
 INSERT INTO products (name, description, price, condition, stock, category_id, image_url, specs, label, label_text) VALUES 
-('iPhone 14 Pro (Used)', 'Excellent condition iPhone 14 Pro', 699.99, 'USED', 15, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "256GB", "color": "Deep Purple", "screenSize": "6.1\" Super Retina XDR"}', 'old', 'USED'),
-('Samsung Galaxy S23 (Used)', 'Great condition Samsung S23', 549.99, 'USED', 12, 1, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Phantom Black", "screenSize": "6.1\" AMOLED"}', 'old', 'USED'),
-('Google Pixel 7 Pro (Used)', 'Good condition Pixel 7 Pro', 449.99, 'USED', 8, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "256GB", "color": "Obsidian", "screenSize": "6.7\" OLED"}', 'old', 'USED'),
-('OnePlus 10 Pro (Used)', 'Fair condition OnePlus 10 Pro', 399.99, 'USED', 10, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Volcanic Black", "screenSize": "6.7\" AMOLED"}', 'old', 'USED'),
-('iPhone 13 (Used)', 'Good condition iPhone 13', 499.99, 'USED', 20, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Blue", "screenSize": "6.1\" Super Retina XDR"}', 'old', 'USED'),
-('Samsung Galaxy S22 (Used)', 'Fair condition Samsung S22', 399.99, 'USED', 15, 1, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Phantom White", "screenSize": "6.1\" AMOLED"}', 'old', 'USED'),
-('Google Pixel 6 Pro (Used)', 'Good condition Pixel 6 Pro', 349.99, 'USED', 12, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Stormy Black", "screenSize": "6.7\" OLED"}', 'old', 'USED'),
+('iPhone 14 Pro (Used)', 'Excellent condition iPhone 14 Pro', 699.99, 'USED', 15, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "256GB", "color": "Deep Purple", "screenSize": "6.1\" Super Retina XDR"}', 'used', 'USED'),
+('Samsung Galaxy S23 (Used)', 'Great condition Samsung S23', 549.99, 'USED', 12, 1, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Phantom Black", "screenSize": "6.1\" AMOLED"}', 'used', 'USED'),
+('Google Pixel 7 Pro (Used)', 'Good condition Pixel 7 Pro', 449.99, 'USED', 8, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "256GB", "color": "Obsidian", "screenSize": "6.7\" OLED"}', 'used', 'USED'),
+('OnePlus 10 Pro (Used)', 'Fair condition OnePlus 10 Pro', 399.99, 'USED', 10, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Volcanic Black", "screenSize": "6.7\" AMOLED"}', 'used', 'USED'),
+('iPhone 13 (Used)', 'Good condition iPhone 13', 499.99, 'USED', 20, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Blue", "screenSize": "6.1\" Super Retina XDR"}', 'used', 'USED'),
+('Samsung Galaxy S22 (Used)', 'Fair condition Samsung S22', 399.99, 'USED', 15, 1, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Phantom White", "screenSize": "6.1\" AMOLED"}', 'used', 'USED'),
+('Google Pixel 6 Pro (Used)', 'Good condition Pixel 6 Pro', 349.99, 'USED', 12, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Stormy Black", "screenSize": "6.7\" OLED"}', 'used', 'USED'),
 ('OnePlus 9 Pro (Used)', 'Fair condition OnePlus 9 Pro', 299.99, 'USED', 18, 1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop', '{"storage": "128GB", "color": "Morning Mist", "screenSize": "6.7\" AMOLED"}', 'old', 'USED');
 
 -- Insert accessories
@@ -61,7 +61,7 @@ SELECT id, stock FROM products;
 
 -- Insert sample orders
 INSERT INTO orders (user_id, status, total_amount, shipping_address, shipping_method, payment_method) VALUES 
-(3, 'PENDING', 1199.99, '123 Main St, City, State 12345', 'Standard Shipping', 'Credit Card'),
+(3, 'PENDING', 1199.99, '123 Main St, City, State 12345', 'Standard Shipping', 'Credit Card', 'new', 'NEW'),
 (4, 'CONFIRMED', 899.99, '456 Oak Ave, Town, State 67890', 'Express Shipping', 'PayPal');
 
 -- Insert sample order items

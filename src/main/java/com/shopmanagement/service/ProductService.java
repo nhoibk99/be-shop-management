@@ -121,8 +121,6 @@ public class ProductService {
         dto.setStock(product.getStock());
         dto.setImageUrl(product.getImageUrl());
         dto.setSpecs(product.getSpecs());
-        dto.setLabel(product.getLabel());
-        dto.setLabelText(product.getLabelText());
         if (product.getCategory() != null) {
             dto.setCategoryId(product.getCategory().getId());
             dto.setCategoryName(product.getCategory().getName());
