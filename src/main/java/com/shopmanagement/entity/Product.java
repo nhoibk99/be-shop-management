@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "products")
@@ -29,14 +31,17 @@ public class Product {
     @Column(nullable = false)
     private String name;
     
-    @Size(max = 1000, message = "Description cannot exceed 1000 characters")
-    @Column(length = 1000)
+    @Size(max = 2000, message = "Description cannot exceed 2000 characters")
+    @Column(columnDefinition = "TEXT")
     private String description;
     
     @NotNull(message = "Price is required")
     @Positive(message = "Price must be positive")
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
+    
+    @Column(name = "old_price", precision = 10, scale = 2)
+    private BigDecimal oldPrice;
     
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -54,6 +59,25 @@ public class Product {
     @Column(name = "image_url")
     private String imageUrl;
     
-    @Column(columnDefinition = "TEXT")
-    private String specs;
+    @ElementCollection
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image_url")
+    private List<String> images;
+    
+    @ElementCollection
+    @CollectionTable(name = "product_tags", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "tag")
+    private List<String> tags;
+    
+    @ElementCollection
+    @CollectionTable(name = "product_specifications", joinColumns = @JoinColumn(name = "product_id"))
+    @MapKeyColumn(name = "spec_key")
+    @Column(name = "spec_value")
+    private Map<String, String> specifications;
+    
+    @Column(name = "warranty_and_return_policy", columnDefinition = "TEXT")
+    private String warrantyAndReturnPolicy;
+    
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Review> reviews;
 }

@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -31,6 +33,8 @@ public class ProductDto {
     @Positive(message = "Price must be positive")
     private BigDecimal price;
     
+    private BigDecimal oldPrice;
+    
     private ProductCondition condition;
     
     @NotNull(message = "Stock is required")
@@ -42,6 +46,12 @@ public class ProductDto {
     
     private String imageUrl;
     private String specs;
+    
+    private List<String> images;
+    private List<String> tags;
+    private Map<String, String> specifications;
+    private String warrantyAndReturnPolicy;
+    private List<ReviewDto> reviews;
     
     // Computed fields based on condition
     public String getLabel() {

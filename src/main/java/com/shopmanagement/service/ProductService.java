@@ -1,9 +1,11 @@
 package com.shopmanagement.service;
 
 import com.shopmanagement.dto.ProductDto;
+import com.shopmanagement.dto.ReviewDto;
 import com.shopmanagement.entity.Category;
 import com.shopmanagement.entity.Product;
 import com.shopmanagement.entity.ProductCondition;
+import com.shopmanagement.entity.Review;
 import com.shopmanagement.repository.CategoryRepository;
 import com.shopmanagement.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -24,14 +26,16 @@ public class ProductService {
     }
     
     public List<ProductDto> getAllProducts() {
-        return productRepository.findAll().stream()
+        return productRepository.findAllWithSpecificationsAndReviews().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
     
     public ProductDto getProductById(Long id) {
-        Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+        Product product = productRepository.findByIdWithSpecifications(id);
+        if (product == null) {
+            throw new RuntimeException("Product not found");
+        }
         return convertToDto(product);
     }
     
@@ -117,14 +121,40 @@ public class ProductService {
         dto.setName(product.getName());
         dto.setDescription(product.getDescription());
         dto.setPrice(product.getPrice());
+        dto.setOldPrice(product.getOldPrice());
         dto.setCondition(product.getCondition());
         dto.setStock(product.getStock());
         dto.setImageUrl(product.getImageUrl());
-        dto.setSpecs(product.getSpecs());
+        dto.setImages(product.getImages());
+        dto.setTags(product.getTags());
+        
+        // Set specifications from the new product_specifications table
+        dto.setSpecifications(product.getSpecifications());
+        
+        dto.setWarrantyAndReturnPolicy(product.getWarrantyAndReturnPolicy());
+        
+        // Convert reviews to DTOs
+        if (product.getReviews() != null) {
+            List<ReviewDto> reviewDtos = product.getReviews().stream()
+                    .map(this::convertReviewToDto)
+                    .collect(Collectors.toList());
+            dto.setReviews(reviewDtos);
+        }
+        
         if (product.getCategory() != null) {
             dto.setCategoryId(product.getCategory().getId());
             dto.setCategoryName(product.getCategory().getName());
         }
         return dto;
+    }
+    
+    private ReviewDto convertReviewToDto(Review review) {
+        return ReviewDto.builder()
+                .id(review.getId())
+                .authorName(review.getAuthorName())
+                .rating(review.getRating())
+                .comment(review.getComment())
+                .createdAt(review.getCreatedAt())
+                .build();
     }
 }

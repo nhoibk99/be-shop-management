@@ -8,5 +8,13 @@
     <!-- Include all changelog files -->
     <include file="db-changelog-001-initial-schema.sql"/>
     <include file="db-changelog-002-sample-data.sql"/>
+    <include file="db-changelog-004-extended-product-detail.sql"/>
+    <include file="db-changelog-005-sample-extended-data.sql"/>
+    <include file="db-changelog-006-migrate-specs-data.sql"/>
+    <include file="db-changelog-007-remove-specs-column.sql"/>
+    <include file="db-changelog-008-comprehensive-sample-data.sql"/>
+    <include file="db-changelog-009-additional-sample-data.sql"/>
+    <include file="db-changelog-010-detailed-product-data.sql"/>
+    <include file="db-changelog-011-accessory-details.sql"/>
 
 </databaseChangeLog>
