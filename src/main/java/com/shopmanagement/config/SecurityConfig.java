@@ -39,16 +39,16 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**").permitAll()
                 
                 // Product endpoints - public read access, admin/staff write access
-                .requestMatchers("GET", "/products/**").permitAll()
-                .requestMatchers("POST", "/products/**").hasAnyRole("ADMIN", "STAFF")
-                .requestMatchers("PUT", "/products/**").hasAnyRole("ADMIN", "STAFF")
-                .requestMatchers("DELETE", "/products/**").hasRole("ADMIN")
-                
+                .requestMatchers("GET", "/products", "/products/**").permitAll()
+                .requestMatchers("POST", "/products", "/products/**").hasAnyRole("ADMIN", "STAFF")
+                .requestMatchers("PUT", "/products", "/products/**").hasAnyRole("ADMIN", "STAFF")
+                .requestMatchers("DELETE", "/products", "/products/**").hasRole("ADMIN")
+
                 // Category endpoints - public read access, admin write access
-                .requestMatchers("GET", "/categories/**").permitAll()
-                .requestMatchers("POST", "/categories/**").hasRole("ADMIN")
-                .requestMatchers("PUT", "/categories/**").hasRole("ADMIN")
-                .requestMatchers("DELETE", "/categories/**").hasRole("ADMIN")
+                .requestMatchers("GET", "/categories", "/categories/**").permitAll()
+                .requestMatchers("POST", "/categories", "/categories/**").hasRole("ADMIN")
+                .requestMatchers("PUT", "/categories", "/categories/**").hasRole("ADMIN")
+                .requestMatchers("DELETE", "/categories", "/categories/**").hasRole("ADMIN")
                 
                 // Order endpoints - authenticated users can create/view their own, admin/staff can manage all
                 .requestMatchers("GET", "/orders/**").authenticated()
@@ -66,10 +66,10 @@ public class SecurityConfig {
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 
                 // Review endpoints - public read access, authenticated write access
-                .requestMatchers("GET", "/reviews/**").permitAll()
-                .requestMatchers("POST", "/reviews/**").authenticated()
-                .requestMatchers("PUT", "/reviews/**").authenticated()
-                .requestMatchers("DELETE", "/reviews/**").authenticated()
+                .requestMatchers("GET", "/reviews", "/reviews/**").permitAll()
+                .requestMatchers("POST", "/reviews", "/reviews/**").authenticated()
+                .requestMatchers("PUT", "/reviews", "/reviews/**").authenticated()
+                .requestMatchers("DELETE", "/reviews", "/reviews/**").authenticated()
                 
                 // Any other request needs authentication
                 .anyRequest().authenticated()
