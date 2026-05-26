@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset shop-management:010
+--changeset shop-management:data-006
 --comment: Add detailed product data including specifications, images, tags, and warranty policies
 
 -- Update existing products with old prices and warranty policies

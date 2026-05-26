@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset shop-management:008
+--changeset shop-management:data-004
 --comment: Add comprehensive sample data for all tables
 
 -- Add more categories (skip if already exists)

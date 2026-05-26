@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset shop-management:009
+--changeset shop-management:data-005
 --comment: Add additional sample data for reviews, orders, and other tables
 
 -- Add more reviews for various products
