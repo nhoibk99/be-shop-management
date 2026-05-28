@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset shop-management:010
+--changeset shop-management:data-006
 --comment: Add detailed product data including specifications, images, tags, and warranty policies
 
 -- Update existing products with old prices and warranty policies
@@ -330,10 +330,10 @@ INSERT INTO product_specifications (product_id, spec_key, spec_value) VALUES
 (10, 'SIM Support', 'Dual SIM (nano + eSIM)'),
 (10, 'Audio', 'Stereo speakers, Spatial Audio'),
 (10, 'Materials', 'Aluminum frame, Gorilla Glass 3'),
-(10, 'Colors', 'Sea, Snow, Charcoal'),
+(10, 'Colors', 'Sea, Snow, Charcoal');
 
 -- Add more product images for better galleries
-INSERT INTO product_images (product_id, image_url) VALUES 
+INSERT INTO product_images (product_id, image_url) VALUES
 -- iPhone 15 Pro Max additional images
 (1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=800&fit=crop&crop=center'),
 (1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=800&fit=crop&crop=top'),

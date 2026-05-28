@@ -1,19 +1,19 @@
--- Add sample data for extended product features
+--liquibase formatted sql
 
--- Update existing products with old prices and warranty policies
+--changeset shop-management:data-002
+--comment: Extended product data - update prices, add images, tags, specs, reviews
+
 UPDATE products SET old_price = 1299.99, warranty_and_return_policy = '1 year manufacturer warranty. 14-day return policy for unused items.' WHERE id = 1;
 UPDATE products SET old_price = 1099.00, warranty_and_return_policy = '1 year Apple warranty. 14-day return policy.' WHERE id = 2;
 UPDATE products SET old_price = 999.00, warranty_and_return_policy = '1 year Google warranty. 15-day return policy.' WHERE id = 3;
 
--- Add sample images for products
-INSERT INTO product_images (product_id, image_url) VALUES 
+INSERT INTO product_images (product_id, image_url) VALUES
 (1, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop'),
 (1, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop'),
 (2, 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop'),
 (2, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop');
 
--- Add sample tags for products
-INSERT INTO product_tags (product_id, tag) VALUES 
+INSERT INTO product_tags (product_id, tag) VALUES
 (1, 'New Arrival'),
 (1, 'Best Seller'),
 (2, 'Premium'),
@@ -21,8 +21,7 @@ INSERT INTO product_tags (product_id, tag) VALUES
 (3, 'AI Powered'),
 (3, 'Camera Focused');
 
--- Add sample specifications
-INSERT INTO product_specifications (product_id, spec_key, spec_value) VALUES 
+INSERT INTO product_specifications (product_id, spec_key, spec_value) VALUES
 (1, 'Display', '6.8" AMOLED'),
 (1, 'Battery', '5000mAh'),
 (1, 'Storage', '256GB'),
@@ -39,8 +38,7 @@ INSERT INTO product_specifications (product_id, spec_key, spec_value) VALUES
 (3, 'Processor', 'Google Tensor G3'),
 (3, 'Material', 'Aluminum');
 
--- Add sample reviews
-INSERT INTO reviews (product_id, author_name, rating, comment, created_at) VALUES 
+INSERT INTO reviews (product_id, author_name, rating, comment, created_at) VALUES
 (1, 'Alice Johnson', 5, 'Amazing phone! The camera quality is outstanding and the battery lasts all day.', '2025-09-07 10:15:00'),
 (1, 'Bob Smith', 4, 'Very good phone but a bit pricey. The performance is excellent though.', '2025-09-06 08:45:00'),
 (1, 'Carol Davis', 5, 'Love the S Pen feature! Perfect for taking notes and drawing.', '2025-09-05 14:30:00'),

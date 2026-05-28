@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset shop-management:011
+--changeset shop-management:data-007
 --comment: Add detailed specifications and data for accessories
 
 -- Add detailed specifications for accessories
