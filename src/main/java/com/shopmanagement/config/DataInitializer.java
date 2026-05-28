@@ -1,5 +1,6 @@
 package com.shopmanagement.config;
 
+import com.shopmanagement.entity.AuthProvider;
 import com.shopmanagement.entity.Category;
 import com.shopmanagement.entity.Role;
 import com.shopmanagement.entity.User;
@@ -31,10 +32,11 @@ public class DataInitializer implements CommandLineRunner {
                     .password(passwordEncoder.encode("admin123"))
                     .email("admin@shop.com")
                     .role(Role.ADMIN)
+                    .provider(AuthProvider.LOCAL)
                     .build();
             userRepository.save(adminUser);
         }
-        
+
         // Create default staff user if not exists
         if (!userRepository.existsByUsername("staff")) {
             User staffUser = User.builder()
@@ -42,6 +44,7 @@ public class DataInitializer implements CommandLineRunner {
                     .password(passwordEncoder.encode("staff123"))
                     .email("staff@shop.com")
                     .role(Role.STAFF)
+                    .provider(AuthProvider.LOCAL)
                     .build();
             userRepository.save(staffUser);
         }

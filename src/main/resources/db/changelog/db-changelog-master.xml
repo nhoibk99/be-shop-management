@@ -7,6 +7,7 @@
 
     <!-- ==================== SCHEMA (DDL) ==================== -->
     <include file="schema/001-initial-schema.sql" relativeToChangelogFile="true"/>
+    <include file="schema/002-oauth-schema.sql" relativeToChangelogFile="true"/>
 
     <!-- ==================== DATA (DML) ==================== -->
     <include file="data/001-seed-data.sql" relativeToChangelogFile="true"/>
