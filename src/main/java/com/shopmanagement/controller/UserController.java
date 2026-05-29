@@ -1,6 +1,7 @@
 package com.shopmanagement.controller;
 
 import com.shopmanagement.dto.UserDto;
+import com.shopmanagement.entity.Role;
 import com.shopmanagement.entity.User;
 import com.shopmanagement.service.UserService;
 import jakarta.validation.Valid;
@@ -58,5 +59,11 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/role")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserDto> updateUserRole(@PathVariable Long id, @RequestParam Role role) {
+        return ResponseEntity.ok(userService.updateUserRole(id, role));
     }
 }

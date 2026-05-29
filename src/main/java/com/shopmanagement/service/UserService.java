@@ -132,6 +132,14 @@ public class UserService implements UserDetailsService {
                 .provider(user.getProvider())
                 .avatarUrl(user.getAvatarUrl())
                 .createdAt(user.getCreatedAt())
-                .build();
+                .build(); // password intentionally excluded from responses
+    }
+
+    @Transactional
+    public UserDto updateUserRole(Long id, Role newRole) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setRole(newRole);
+        return convertToDto(userRepository.save(user));
     }
 }
